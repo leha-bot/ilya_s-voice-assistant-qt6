@@ -1,2 +1,2 @@
-# voice-assistent-Windows-qt6-C-17-
+# voice-assistent-Windows
 voice assistent for Windows (qt6 C++17)
