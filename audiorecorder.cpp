@@ -36,8 +36,8 @@ AudioRecorder::AudioRecorder(QObject *parent) : QObject{parent}
 
     statusSpeech = true;
     newStatusSpeech = false;
-    connect(&timerOfFinishedSpeech, &QTimer::timeout, this, &AudioRecorder::timeoutOfSpeech);
-    connect(&voiceCommandWaitTimer, &QTimer::timeout, this, &AudioRecorder::restartWaitTimer);
+//    connect(&timerOfFinishedSpeech, &QTimer::timeout, this, &AudioRecorder::timeoutOfSpeech);
+//    connect(&voiceCommandWaitTimer, &QTimer::timeout, this, &AudioRecorder::restartWaitTimer);
     modeAudioInput = "voiceStandby";
 }
 
@@ -59,7 +59,7 @@ void AudioRecorder::toggleRecord(bool commandRecord)
         sourceAudio->start(audioProbe);
 
 
-        voiceCommandWaitTimer.start(intervalRecording);
+//        voiceCommandWaitTimer.start(intervalRecording);
         qDebug() << "Новый файл создан";
         qDebug() << "Запись стартовала";
     }
@@ -69,9 +69,9 @@ void AudioRecorder::toggleRecord(bool commandRecord)
         audioProbe->close();
 
 
-        voiceCommandWaitTimer.stop();
-        timerOfFinishedSpeech.stop();
-        qDebug() << QFile::remove(fileName + ".mp3");
+//        voiceCommandWaitTimer.stop();
+//        timerOfFinishedSpeech.stop();
+//        qDebug() << QFile::remove(fileName + ".mp3");
     }
 }
 
@@ -177,19 +177,19 @@ void AudioRecorder::processBuffer(QAudioBuffer buffer)
     }
     if (!statusSpeech && newStatusSpeech) {
         newStatusSpeech = statusSpeech;
-        timerOfFinishedSpeech.start(2000);
+//        timerOfFinishedSpeech.start(2000);
     }
     if (statusSpeech && !newStatusSpeech) {
 //        newStatusSpeech = statusSpeech;
-        timerOfFinishedSpeech.stop();
-        voiceCommandWaitTimer.stop();
+//        timerOfFinishedSpeech.stop();
+//        voiceCommandWaitTimer.stop();
     }
 }
 
 void AudioRecorder::timeoutOfSpeech()
 {
-    timerOfFinishedSpeech.stop();
-    voiceCommandWaitTimer.stop();
+//    timerOfFinishedSpeech.stop();
+//    voiceCommandWaitTimer.stop();
     audioRecorder->stop();
     modeAudioInput = "speechRecording";
 //    QFile::remove(fileName + ".mp3");

@@ -63,10 +63,10 @@ private:
     qreal thresholdOfAudioinputActivation = 60.0;
     bool statusSpeech;
     bool newStatusSpeech;
-    QTimer timerOfFinishedSpeech;
+//    QTimer timerOfFinishedSpeech;
 
-    const int intervalRecording = 15000;
-    QTimer voiceCommandWaitTimer;
+//    const int intervalRecording = 15000;
+//    QTimer voiceCommandWaitTimer;
     QString modeAudioInput;
 
 
